@@ -1,0 +1,14 @@
+# 모든 파일 무시 (allowlist 방식)
+*
+
+# 이 .gitignore 자체는 추적
+!.gitignore
+
+# QA 문서
+!QA_CheckList.md
+!QA_FlowChart.md
+!BugReport.md
+!FixLog.md
+!Retrospective.md
+!LLM_Log.md
+!README.md
