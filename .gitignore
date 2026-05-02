@@ -12,3 +12,11 @@
 !Retrospective.md
 !LLM_Log.md
 !README.md
+
+# 수정된 소스 파일
+!Source/
+!Source/AO/
+!Source/AO/Private/
+!Source/AO/Private/UI/
+!Source/AO/Private/UI/Widget/
+!Source/AO/Private/UI/Widget/AO_MainMenuWidget.cpp
