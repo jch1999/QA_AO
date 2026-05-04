@@ -20,3 +20,5 @@
 !Source/AO/Private/UI/
 !Source/AO/Private/UI/Widget/
 !Source/AO/Private/UI/Widget/AO_MainMenuWidget.cpp
+!Source/AO/Private/Train/
+!Source/AO/Private/Train/AO_TrainDoor.cpp
