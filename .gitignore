@@ -22,7 +22,3 @@
 !Source/AO/Private/UI/Widget/AO_MainMenuWidget.cpp
 !Source/AO/Private/Train/
 !Source/AO/Private/Train/AO_TrainDoor.cpp
-!Source/AO/Private/Character/
-!Source/AO/Private/Character/GAS/
-!Source/AO/Private/Character/GAS/Ability/
-!Source/AO/Private/Character/GAS/Ability/AO_GameplayAbility_Sprint.cpp
