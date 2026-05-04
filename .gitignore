@@ -23,6 +23,10 @@
 !Source/AO/Private/Train/
 !Source/AO/Private/Train/AO_TrainDoor.cpp
 !Source/AO/Private/Character/
-!Source/AO/Private/Character/GAS/
-!Source/AO/Private/Character/GAS/Ability/
-!Source/AO/Private/Character/GAS/Ability/AO_GameplayAbility_Sprint.cpp
+!Source/AO/Private/Character/AO_PlayerCharacter.cpp
+!Source/AO/Private/Player/
+!Source/AO/Private/Player/PlayerState/
+!Source/AO/Private/Player/PlayerState/AO_PlayerState.cpp
+!Source/AO/Private/Item/
+!Source/AO/Private/Item/invenroty/
+!Source/AO/Private/Item/invenroty/AO_InventoryComponent.cpp
