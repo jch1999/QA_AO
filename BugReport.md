@@ -363,3 +363,88 @@ UnrealEditor_AO!UAO_InteractionComponent::OnInteractPressed() [AO_InteractionCom
 해당 없음
 
 ---
+
+## TRAIN-001
+
+| 항목 | 내용 |
+|---|---|
+| **관련 체크리스트** | - |
+| **보고일** | 2026-05-04 |
+| **보고자** | jch1999 |
+| **우선순위** | P1-High |
+| **영역** | 싱글플레이 |
+| **카테고리** | 기능 |
+| **발생빈도** | 항상 |
+| **상태** | 미수정 |
+
+### 제목
+
+기차 문(TrainDoor) 상호작용 키 입력 시 반응 없음
+
+### 환경
+
+| 항목 | 내용 |
+|---|---|
+| 엔진 버전 | Unreal Engine 5.6.1 |
+| 실행 환경 | 에디터 PIE (Play In Editor) |
+| 네트워크 구성 | 싱글플레이 |
+| 플랫폼 | Windows 11 |
+
+### 재현 절차
+
+1. 튜토리얼 레벨 진입
+2. 기차 문 앞으로 이동
+3. 상호작용 범위 내에서 기차 문을 바라봄
+4. 상호작용 키 입력
+
+### 기대 결과
+
+기차 문이 하이라이트(외곽선)되고, 상호작용 UI가 표시되며, 상호작용 키 입력 시 문이 열리거나 닫힌다.
+
+### 실제 결과
+
+기차 문에 가까이 가도 하이라이트가 표시되지 않는다. 상호작용 UI도 나타나지 않으며, 상호작용 키를 눌러도 아무 반응이 없다. 튜토리얼 지시사항(`Get on the train`)을 수행할 수 없는 상태이다.
+
+### 원인 분석
+
+**파일:** `Source/AO/Private/Train/AO_TrainDoor.cpp`  
+**함수:** `AAO_TrainDoor::CanInteraction()` (53번째 줄)
+
+```cpp
+bool AAO_TrainDoor::CanInteraction(const FAO_InteractionQuery& InteractionQuery) const
+{
+    return false;   // 무조건 false 반환
+}
+```
+
+상호작용 감지 태스크(`UAO_AbilityTask_WaitForInteractableTraceHit`)는 SphereTrace로 인터랙터블 액터를 감지한 뒤, `CanInteraction()`이 `true`를 반환하는 경우에만 하이라이트 및 어빌리티를 부여한다. `AAO_TrainDoor`는 이 함수를 무조건 `false`를 반환하도록 오버라이드하고 있어, Trace 히트 이후 `UpdateInteractionInfos()`의 필터링 단계에서 항상 제외된다.
+
+부모 클래스 `AAO_BaseInteractable::CanInteraction()`은 `bInteractionEnabled` 플래그 및 비활성화 플레이어 목록을 올바르게 검사한 후 `true`를 반환하도록 구현되어 있다.
+
+### 수정 내용
+
+미수정
+
+```cpp
+// 수정 전
+bool AAO_TrainDoor::CanInteraction(const FAO_InteractionQuery& InteractionQuery) const
+{
+    return false;
+}
+
+// 수정 후
+bool AAO_TrainDoor::CanInteraction(const FAO_InteractionQuery& InteractionQuery) const
+{
+    return Super::CanInteraction(InteractionQuery);
+}
+```
+
+### 검증 결과
+
+해당 없음
+
+---
+
+
+
+
