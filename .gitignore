@@ -24,6 +24,11 @@
 !Source/AO/Private/Train/AO_TrainDoor.cpp
 !Source/AO/Private/Character/
 !Source/AO/Private/Character/AO_PlayerCharacter.cpp
+!Source/AO/Private/Character/GAS/
+!Source/AO/Private/Character/GAS/AO_PlayerCharacter_AttributeSet.cpp
+!Source/AO/Private/Character/Combat/
+!Source/AO/Private/Character/Combat/Ability/
+!Source/AO/Private/Character/Combat/Ability/AO_GameplayAbility_HitReact.cpp
 !Source/AO/Private/Player/
 !Source/AO/Private/Player/PlayerState/
 !Source/AO/Private/Player/PlayerState/AO_PlayerState.cpp
