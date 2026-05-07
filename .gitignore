@@ -35,3 +35,6 @@
 !Source/AO/Private/Item/
 !Source/AO/Private/Item/invenroty/
 !Source/AO/Private/Item/invenroty/AO_InventoryComponent.cpp
+!Source/AO/Private/AI/
+!Source/AO/Private/AI/Animation/
+!Source/AO/Private/AI/Animation/AO_AN_AIFootstep.cpp
