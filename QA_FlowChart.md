@@ -122,28 +122,7 @@ flowchart TD
 
 ---
 
-## S-006 · 공격 입력 → GAS 어빌리티 발동 + 몽타주 + GameplayCue VFX/SFX + 피해 수치
-
-```mermaid
-flowchart TD
-    A([시작]) --> B[AI 근처에 플레이어 배치]
-    B --> C[공격 키 입력]
-    C --> D{GA_MeleeAttack 발동?}
-    D -- 아니오 --> E[❌ FAIL: 어빌리티 미발동\nGAS 태그·조건 확인]
-    D -- 예 --> F{공격 몽타주 즉시 재생?}
-    F -- 아니오 --> G[❌ FAIL: 몽타주 없음]
-    F -- 예 --> H{GA_MeleeHitConfirm 히트 발생?}
-    H -- 아니오 --> I[⚠️ WARN: 명중 판정 없음]
-    H -- 예 --> J{GameplayCue VFX·SFX 동시 발생?}
-    J -- 아니오 --> K[❌ FAIL: 피드백 없음]
-    J -- 예 --> L{피해 수치 UI 표시?}
-    L -- 아니오 --> M[⚠️ WARN: 수치 미표시]
-    L -- 예 --> N([✅ PASS])
-```
-
----
-
-## S-007 · 피격 시 → HitReact 방향별 몽타주 + 무적 프레임 + 화면 비네트
+## S-007 · 피격 시 → HitReact 방향별 몽타주 + 무적 프레임
 
 ```mermaid
 flowchart TD
@@ -156,9 +135,7 @@ flowchart TD
     G -- 아니오 --> H[⚠️ WARN: 무적 프레임 없음]
     G -- 예 --> I{무적 중 추가 피해 무시?}
     I -- 아니오 --> J[❌ FAIL: 무적 미작동]
-    I -- 예 --> K{화면 비네트/플래시 피드백?}
-    K -- 아니오 --> L[⚠️ WARN: 화면 피드백 없음]
-    K -- 예 --> M([✅ PASS])
+    I -- 예 --> K([✅ PASS])
 ```
 
 ---
@@ -204,12 +181,12 @@ flowchart TD
 
 ---
 
-## S-010 · 빠른 연속 입력 (공격+점프+인터랙션 동시) → 어빌리티 충돌 크래시 없음
+## S-010 · 빠른 연속 입력 (점프+스프린트+인터랙션 동시) → 어빌리티 충돌 크래시 없음
 
 ```mermaid
 flowchart TD
-    A([시작]) --> B[인터랙션 오브젝트·AI 근처 배치]
-    B --> C[공격+점프+인터랙션 동시 입력\n10회 빠른 연속]
+    A([시작]) --> B[인터랙션 오브젝트 근처 배치]
+    B --> C[점프+스프린트+인터랙션 동시 입력\n10회 빠른 연속]
     C --> D{크래시 발생?}
     D -- 예 --> E[❌ FAIL: 크래시]
     D -- 아니오 --> F{GAS 태그 충돌로 일부 차단?}
@@ -1244,7 +1221,7 @@ flowchart TD
     D -- 예 --> F[RestRoom 레벨 이동]
     F --> G{이동 완료?}
     G -- 아니오 --> H[❌ FAIL: 레벨 이동 실패]
-    G -- 예 --> I[팀 통계 UI 확인\n킬/데스/수집]
+    G -- 예 --> I[팀 통계 UI 확인\n데스 횟수/게임 소요 시간]
     I --> J{GameState 통계 정확?}
     J -- 아니오 --> K[❌ FAIL: 통계 불일치]
     J -- 예 --> L([✅ PASS])
@@ -1279,7 +1256,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     A([시작]) --> B[콘솔 명령:\nNet PktLag=200]
-    B --> C[Client에서 공격/점프 입력]
+    B --> C[Client에서 점프/스프린트/인터랙션 입력]
     C --> D{Client 즉각 반응\nLocal Prediction?}
     D -- 아니오 --> E[❌ FAIL: 로컬 예측 없음\n200ms 딜레이 체감]
     D -- 예 --> F{서버 확인 후 Rollback 발생?}
